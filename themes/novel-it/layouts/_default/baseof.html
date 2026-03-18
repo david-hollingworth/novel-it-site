@@ -6,8 +6,8 @@
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CSS with typography plugin -->
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
 
   <!-- Courier Prime font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,21 @@
           colors: {
             paper: '#EEEFF6',
             sidebar: '#F6F5EE',
-          }
+          },
+          typography: (theme) => ({
+            DEFAULT: {
+              css: {
+                fontFamily: '"Courier Prime", "Courier New", Courier, monospace',
+                color: theme('colors.gray.900'),
+                a: { color: theme('colors.gray.900') },
+                'h1, h2, h3, h4': {
+                  fontFamily: '"Courier Prime", "Courier New", Courier, monospace',
+                  fontWeight: '700',
+                  color: theme('colors.gray.900'),
+                },
+              },
+            },
+          }),
         }
       }
     }
@@ -43,7 +57,7 @@
       <a href="{{ .Site.BaseURL }}" class="font-bold text-3xl tracking-tight hover:opacity-70">
         Novel-It
       </a>
-      <ul class="flex items-center gap-2 text-lg">
+      <ul class="flex items-center gap-2 text-sm">
         <li><a href="https://github.com/david-hollingworth/novel-it" class="hover:opacity-70">GitHub</a></li>
         <li class="text-gray-400">|</li>
         <li><a href="https://github.com/david-hollingworth/novel-it/wiki" class="hover:opacity-70">Wiki</a></li>

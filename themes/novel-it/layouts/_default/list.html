@@ -7,14 +7,14 @@
     <h2 class="text-2xl font-bold mb-2">
       <a href="{{ .Permalink }}" class="hover:opacity-70">{{ .Title }}</a>
     </h2>
-    <p class="text-sm text-gray-600 mb-3">{{ .Summary }}</p>
+    <div class="prose max-w-none text-gray-600 mb-3">{{ .Summary | safeHTML }}</div>
     <a href="{{ .Permalink }}" class="text-sm hover:opacity-70">Read more →</a>
   </div>
   {{ end }}
 
-  <!-- Post list -->
+  <!-- Post list — newest first -->
   <div class="space-y-8">
-    {{ range where .Site.RegularPages "Params.pinned" "ne" true }}
+    {{ range where (.Site.RegularPages.ByDate.Reverse) "Params.pinned" "ne" true }}
     {{ if eq .Section "posts" }}
     <article class="border-b border-gray-300 pb-8">
       <h2 class="text-2xl font-bold mb-1">
@@ -29,7 +29,7 @@
           {{ end }}
         {{ end }}
       </div>
-      <p class="text-sm leading-relaxed">{{ .Summary }}</p>
+      <div class="prose max-w-none leading-relaxed">{{ .Summary | safeHTML }}</div>
       <a href="{{ .Permalink }}" class="text-sm mt-2 inline-block hover:opacity-70">Read more →</a>
     </article>
     {{ end }}
