@@ -16,7 +16,7 @@
     <h3 class="font-bold text-base mb-3">Tags</h3>
     <div class="flex flex-wrap gap-2">
       {{ range $name, $pages := $tags }}
-      <a href="{{ "/tags/" | relURL }}{{ $name | urlize }}/"
+      <a href="{{ .Page.Permalink }}"
          class="text-sm px-2 py-1 bg-paper rounded hover:opacity-70">
         {{ $name }} ({{ len $pages }})
       </a>
