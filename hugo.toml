@@ -1,0 +1,22 @@
+baseURL = "https://david-hollingworth.github.io/novel-it-site/"
+languageCode = "en-gb"
+title = "Novel-It"
+theme = "novel-it"
+
+disablePathToLower = true
+
+[permalinks]
+  posts = "/posts/:slug/"
+
+[taxonomies]
+  tag = "tags"
+
+[params]
+  description = "A self-hosted, open-source novel writing application"
+  dateFormat = "2 January 2006"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+  style = "monochrome"

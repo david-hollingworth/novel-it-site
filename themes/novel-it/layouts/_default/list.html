@@ -1,0 +1,39 @@
+{{ define "main" }}
+
+  <!-- Pinned post -->
+  {{ range where .Site.RegularPages "Params.pinned" true }}
+  <div class="border border-gray-300 rounded p-5 mb-8 bg-sidebar">
+    <span class="text-xs uppercase tracking-widest text-gray-500 mb-2 block">Pinned</span>
+    <h2 class="text-xl font-bold mb-2">
+      <a href="{{ .Permalink }}" class="hover:opacity-70">{{ .Title }}</a>
+    </h2>
+    <p class="text-sm text-gray-600 mb-3">{{ .Summary }}</p>
+    <a href="{{ .Permalink }}" class="text-sm hover:opacity-70">Read more →</a>
+  </div>
+  {{ end }}
+
+  <!-- Post list -->
+  <div class="space-y-8">
+    {{ range where .Site.RegularPages "Params.pinned" "ne" true }}
+    {{ if eq .Section "posts" }}
+    <article class="border-b border-gray-300 pb-8">
+      <h2 class="text-xl font-bold mb-1">
+        <a href="{{ .Permalink }}" class="hover:opacity-70">{{ .Title }}</a>
+      </h2>
+      <div class="text-xs text-gray-500 mb-3">
+        {{ .Date.Format .Site.Params.dateFormat }}
+        {{ with .Params.tags }}
+          &nbsp;·&nbsp;
+          {{ range . }}
+          <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="hover:opacity-70">#{{ . }}</a>
+          {{ end }}
+        {{ end }}
+      </div>
+      <p class="text-sm leading-relaxed">{{ .Summary }}</p>
+      <a href="{{ .Permalink }}" class="text-sm mt-2 inline-block hover:opacity-70">Read more →</a>
+    </article>
+    {{ end }}
+    {{ end }}
+  </div>
+
+{{ end }}

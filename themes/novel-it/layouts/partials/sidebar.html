@@ -1,0 +1,28 @@
+<div class="space-y-8">
+
+  <!-- About -->
+  <div class="bg-sidebar rounded p-4">
+    <h3 class="font-bold text-base mb-2">About Novel-It</h3>
+    <p class="text-sm leading-relaxed">
+      A free, self-hosted web application for writing and planning novels.
+      Your words belong to you.
+    </p>
+  </div>
+
+  <!-- Tags -->
+  {{ $tags := .Site.Taxonomies.tags }}
+  {{ if $tags }}
+  <div class="bg-sidebar rounded p-4">
+    <h3 class="font-bold text-base mb-3">Tags</h3>
+    <div class="flex flex-wrap gap-2">
+      {{ range $name, $pages := $tags }}
+      <a href="{{ "/tags/" | relURL }}{{ $name | urlize }}/"
+         class="text-sm px-2 py-1 bg-paper rounded hover:opacity-70">
+        {{ $name }} ({{ len $pages }})
+      </a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+
+</div>

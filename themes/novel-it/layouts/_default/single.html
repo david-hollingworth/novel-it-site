@@ -1,0 +1,29 @@
+{{ define "main" }}
+
+  <article>
+    <!-- Post header -->
+    <header class="mb-8 border-b border-gray-300 pb-6">
+      <h1 class="text-3xl font-bold mb-3">{{ .Title }}</h1>
+      <div class="text-sm text-gray-500">
+        {{ .Date.Format .Site.Params.dateFormat }}
+        {{ with .Params.tags }}
+          &nbsp;·&nbsp;
+          {{ range . }}
+          <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="hover:opacity-70">#{{ . }}</a>
+          {{ end }}
+        {{ end }}
+      </div>
+    </header>
+
+    <!-- Post content -->
+    <div class="prose prose-sm max-w-none leading-relaxed space-y-4">
+      {{ .Content }}
+    </div>
+
+    <!-- Post footer -->
+    <footer class="mt-8 pt-6 border-t border-gray-300">
+      <a href="{{ .Site.BaseURL }}posts/" class="text-sm hover:opacity-70">← Back to posts</a>
+    </footer>
+  </article>
+
+{{ end }}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Courier Prime font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['"Courier Prime"', '"Courier New"', 'Courier', 'monospace'],
+          },
+          colors: {
+            paper: '#EEEFF6',
+            sidebar: '#F6F5EE',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Courier Prime', 'Courier New', Courier, monospace; }
+  </style>
+</head>
+
+<body class="bg-paper text-gray-900 min-h-screen">
+
+  <!-- Nav bar -->
+  <nav class="bg-sidebar border-b border-gray-300">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="{{ .Site.BaseURL }}" class="font-bold text-lg tracking-tight hover:opacity-70">
+        Novel-It
+      </a>
+      <ul class="flex items-center gap-2 text-sm">
+        <li><a href="https://github.com/david-hollingworth/novel-it" class="hover:opacity-70">GitHub</a></li>
+        <li class="text-gray-400">|</li>
+        <li><a href="https://github.com/david-hollingworth/novel-it/wiki" class="hover:opacity-70">Wiki</a></li>
+        <li class="text-gray-400">|</li>
+        <li><a href="https://david-hollingworth.github.io/novel-it-site/" class="hover:opacity-70">Docs</a></li>
+        <li class="text-gray-400">|</li>
+        <li><a href="https://github.com/david-hollingworth/novel-it/releases" class="hover:opacity-70">Releases</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main layout: two columns -->
+  <div class="max-w-6xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+    <!-- Main content -->
+    <main class="lg:col-span-2">
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="lg:col-span-1 border-l border-gray-300 pl-8">
+      {{ block "sidebar" . }}
+        {{ partial "sidebar.html" . }}
+      {{ end }}
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-300 mt-8">
+    <div class="max-w-6xl mx-auto px-4 py-4 text-sm text-gray-500 text-center">
+      Novel-It is free and open-source software, licensed under
+      <a href="https://github.com/david-hollingworth/novel-it/blob/main/LICENSE" class="hover:opacity-70">AGPL-3.0</a>.
+    </div>
+  </footer>
+
+</body>
+</html>
