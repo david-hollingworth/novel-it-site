@@ -1,5 +1,5 @@
 ---
-title: "Novel-It Versions 0.1.5"
+title: "Novel-It Version 0.1.5"
 date: 2026-03-19
 slug: "novel-it-0.1.5"
 pinned: false
