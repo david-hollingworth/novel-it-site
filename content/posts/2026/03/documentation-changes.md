@@ -1,5 +1,5 @@
 ---
-title: "Documentation Chnages"
+title: "Documentation Changes"
 date: 2026-03-23
 slug: "documentation-changes-20260323"
 pinned: false
