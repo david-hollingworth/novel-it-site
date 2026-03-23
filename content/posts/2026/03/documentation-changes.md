@@ -3,7 +3,7 @@ title: "Documentation Changes"
 date: 2026-03-23
 slug: "documentation-changes-20260323"
 pinned: false
-tags: ["documentaation", "features", "requirements", "traceability"]
+tags: ["documentation", "features", "requirements", "traceability"]
 ---
 
 ### Documentation Review
