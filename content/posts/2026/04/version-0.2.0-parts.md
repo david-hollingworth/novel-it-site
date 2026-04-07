@@ -1,6 +1,6 @@
 ---
 title: "Novel-It Version 0.2.0: Parts"
-date: 2026-04-03
+date: 2026-04-07
 slug: "novel-it-0.2.0"
 pinned: false
 tags: ["features", "news", "releases"]
